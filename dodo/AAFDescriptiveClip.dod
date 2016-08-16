@@ -1,0 +1,271 @@
+#c *********************************************************************
+#c
+#c $Id: AAFDescriptiveClip.dod,v 1.5 2009/06/01 11:46:50 stuart_hc Exp $ $Name: V116 $
+#c
+#c The contents of this file are subject to the AAF SDK Public Source
+#c License Agreement Version 2.0 (the "License"); You may not use this
+#c file except in compliance with the License.  The License is available
+#c in AAFSDKPSL.TXT, or you may obtain a copy of the License from the
+#c Advanced Media Workflow Association, Inc., or its successor.
+#c
+#c Software distributed under the License is distributed on an "AS IS"
+#c basis, WITHOUT WARRANTY OF ANY KIND, either express or implied.  See
+#c the License for the specific language governing rights and limitations
+#c under the License.  Refer to Section 3.3 of the License for proper use
+#c of this Exhibit.
+#c
+#c WARNING:  Please contact the Advanced Media Workflow Association,
+#c Inc., for more information about any additional licenses to
+#c intellectual property covering the AAF Standard that may be required
+#c to create and distribute AAF compliant products.
+#c (http://www.amwa.tv/policies).
+#c
+#c Copyright Notices:
+#c The Original Code of this file is Copyright 1998-2009, licensor of the
+#c Advanced Media Workflow Association.  All rights reserved.
+#c
+#c The Initial Developer of the Original Code of this file and the
+#c licensor of the Advanced Media Workflow Association is
+#c Avid Technology.
+#c All rights reserved.
+#c
+#c *********************************************************************
+#startm .this-module 0
+AAFDescriptiveClip\
+#endm
+#c
+#startm .parent-module 0
+AAFSourceClip\
+#endm
+#c
+#c #import ./AAFSourceClip.exp
+AD_HEAD
+AD_IDL(///
+
+/// In addition to the specific error results listed for each method\,
+/// all methods in this interface may also return one of the following
+/// values:
+/// 
+/// AAFRESULT_NOMEMORY
+///   - insufficient system memory is available to perform the
+///     operation.
+///
+/// AAFRESULT_NOT_INITIALIZED
+///   - This object has not yet had Initialize\(\) called on it through
+///     this object's primary interface.  Note that IAAFMobSlot is a
+///     primary interface for an abstract class\, so it is not
+///     appropriate for the Initialize\(\) method to exist in this
+///     interface.  The Initialize\(\) method is available through the
+///     concrete object's primary interface.
+/// 
+///)
+
+AD_CLASS_UUID(fcc3639d, 7ee5, 4fe4, 8b, b3, b8, 10, c0, e9, e6, 00)
+
+AD_DEFAULT_UUID(2e777356, b7e4, 43ba, bf, d4, f9, 64, d9, 0b, c5, e3)
+
+AD_XCLASS_BEGIN(Concrete, StoredObject)
+
+AD_XMETHOD3(Initialize,
+			[in],
+				objIn,
+				AAFDataDef,
+				pDataDef,
+				Data Definition object,
+			[in],
+				objPass,
+				aafLength_constref,
+				length,
+				Length property value,
+			[in],
+				objPass,
+				aafSourceRef_t,
+				sourceRef,
+				Source Reference,
+			This method initializes a source clip object with
+  /// the given properties.  Only required properties are set.
+  /// Optional properties are added with separate functions.
+  ///
+  /// Succeds if:
+  /// - This object has not already been Initialize\(\)d.
+  ///
+  /// This method will return the following codes.  If more than one of
+  /// the listed errors is in effect\, it will return the first one
+  /// encountered in the order given below:
+  /// 
+  /// AAFRESULT_SUCCESS
+  ///   - succeeded.  \(This is the only code indicating success.\)
+  ///
+  /// AAFRESULT_ALREADY_INITIALIZED
+  ///   - Initialize\(\) has already been called on this object.
+  ///
+  /// AAFRESULT_NULL_PARAM
+  ///   - pDataDef argument is NULL.)
+
+
+AD_XMETHOD1(CountDescribedSlotIDs,
+			[out\, retval],
+			objPass,
+			aafUInt32*,
+			pCount,
+			Number of described slot IDs,
+			Gets the total number of described slot IDs present in
+  /// the list of described slot IDs referenced by this DescriptiveClip.
+  ///
+  /// Succeeds if all of the following are true:
+  /// - the pCount pointer is valid;
+  /// - the DescribedSlotIDs property is present.
+  ///
+  /// If this method fails nothing will be written to *pCount.
+  ///
+  /// This method will return the following codes.  If more than one of
+  /// the listed errors is in effect\, it will return the first one
+  /// encountered in the order given below:
+  ///
+  /// AAFRESULT_SUCCESS
+  ///   - succeeded.  \(This is the only code indicating success.\)
+  ///
+  /// AAFRESULT_NULL_PARAM
+  ///   - pCount arg is NULL.
+  ///
+  /// AAFRESULT_PROP_NOT_PRESENT
+  ///   - the DescribedSlotIDs property is not present.)
+
+
+AD_XMETHOD2(GetDescribedSlotIDs,
+			[in],
+			objPass,
+			aafUInt32,
+			maxDescribedSlotIDCount,
+			The size of the given pDescribedSlotIDs buffer,
+			[out\, size_is\(maxDescribedSlotIDCount\)],
+			objPass,
+			aafUInt32 *,
+			pDescribedSlotIDs,
+			Array to hold the described slot IDs,
+			Gets all the described slot IDs in the list of
+  /// described slot IDs referenced by this DescriptiveClip.
+  ///
+  /// The values are written to the array specified by pDescribedSlotIDs\,
+  /// which is of size maxDescribedSlotIDCount. The required size may be found
+  /// by calling CountDescribedSlotIDs\(\).
+  /// 
+  /// Succeeds if all of the following are true:
+  /// - pDescribedSlotIDs is a valid pointer;
+  /// - maxDescribedSlotIDCount indicates the array is large enough to hold the
+  ///   data;
+  /// - the DescribedSlotIDs property is present.
+  /// 
+  /// If this method fails\, the property will not be changed.
+  /// 
+  /// This method will return the following codes:
+  /// 
+  /// AAFRESULT_SUCCESS
+  ///   - succeeded.  \(This is the only code indicating success.\)
+  ///
+  /// AAFRESULT_NULL_PARAM
+  ///   - pDescribedSlotIDs is NULL.
+  ///
+  /// AAFRESULT_SMALLBUF
+  ///   - maxDescribedSlotIDCount indicates that the array is too small to hold
+  ///     all the referenced described slot IDs.
+  ///
+  /// AAFRESULT_PROP_NOT_PRESENT
+  ///   - the DescribedSlotIDs property is not present.)
+
+
+AD_XMETHOD2(IsDescribedSlotIDPresent,
+			[in],
+			  objPass,
+			  aafUInt32,
+			  DescribedSlotID,
+			  described slot ID whose presence is to be queried,
+			[out\,retval],
+			  objPass,
+			  aafBoolean_t*,
+			  pIsPresent,
+			  True if DescribedSlotID is present,
+			Determines if the given described slot ID is present in
+  /// the list of described slot IDs referenced by this DescriptiveClip.
+  ///
+  ///
+  /// Succeeds if all of the following are true:
+  /// - the pIsPresent pointer is valid;
+  /// - the DescribedSlotIDs property is present.
+  ///
+  /// If this method fails nothing will be written to *pIsPresent.
+  ///
+  /// This method will return the following codes.  If more than one of
+  /// the listed errors is in effect\, it will return the first one
+  /// encountered in the order given below:
+  ///
+  /// AAFRESULT_SUCCESS
+  ///   - succeeded.  \(This is the only code indicating success.\)
+  ///
+  /// AAFRESULT_NULL_PARAM
+  ///   - pIsPresent arg is NULL.
+  ///
+  /// AAFRESULT_PROP_NOT_PRESENT
+  ///   - the DescribedSlotIDs property is not present.)
+
+
+AD_XMETHOD1(AddDescribedSlotID,
+			[in],
+				objPass,
+				aafUInt32,
+				DescribedSlotID,
+				described slot ID to add.,
+
+			Appends the given described slot ID to the list of
+  /// described slot IDs referenced by this DescriptiveClip.
+  ///
+  /// Succeeds if all of the following are true:
+  /// - the given described slot ID is not already contained in the list
+  ///   of described slot IDs referenced by this DescriptiveClip.
+  ///
+  /// If this method fails\, the property will not be changed.
+  ///
+  /// This method will return the following codes:
+  ///
+  /// AAFRESULT_SUCCESS
+  ///   - succeeded.  \(This is the only code indicating success.\)
+  ///
+  /// AAFRESULT_INVALID_PARAM
+  ///   - The given described slot ID is already contained in the list
+  ///     of described slot IDs referenced by this DescriptiveClip.)
+
+
+AD_XMETHOD1(RemoveDescribedSlotID,
+			[in],
+				objPass,
+				aafUInt32,
+				DescribedSlotID,
+				described slot ID to remove.,
+
+				Removes the given described slot ID from
+  /// the list of described slot IDs referenced by this DescriptiveClip.
+  ///
+  /// If the removed ID was the last ID in the list\, the list is removed
+  /// from this DescriptiveClip \(the property is removed\).
+  ///
+  /// Succeeds if all of the following are true:
+  /// - the DescribedSlotIDs property is present;
+  /// - the given described slot ID is present in the list
+  ///   of described slot IDs referenced by this DescriptiveClip.
+  ///
+  /// If this method fails\, the property will not be changed.
+  ///
+  /// This method will return the following codes:
+  ///
+  /// AAFRESULT_SUCCESS
+  ///   - succeeded.  \(This is the only code indicating success.\)
+  ///
+  /// AAFRESULT_PROP_NOT_PRESENT
+  ///   - property not present.
+  ///
+  /// AAFRESULT_INVALID_PARAM
+  ///   - The given described slot ID is not present in the list
+  ///     of described slot IDs referenced by this DescriptiveClip.)
+
+
+AD_XCLASS_END(Concrete, StoredObject)

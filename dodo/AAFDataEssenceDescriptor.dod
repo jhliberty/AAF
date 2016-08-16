@@ -1,0 +1,119 @@
+#c *********************************************************************
+#c
+#c $Id: AAFDataEssenceDescriptor.dod,v 1.3 2009/06/01 11:46:50 stuart_hc Exp $ $Name: V116 $
+#c
+#c The contents of this file are subject to the AAF SDK Public Source
+#c License Agreement Version 2.0 (the "License"); You may not use this
+#c file except in compliance with the License.  The License is available
+#c in AAFSDKPSL.TXT, or you may obtain a copy of the License from the
+#c Advanced Media Workflow Association, Inc., or its successor.
+#c
+#c Software distributed under the License is distributed on an "AS IS"
+#c basis, WITHOUT WARRANTY OF ANY KIND, either express or implied.  See
+#c the License for the specific language governing rights and limitations
+#c under the License.  Refer to Section 3.3 of the License for proper use
+#c of this Exhibit.
+#c
+#c WARNING:  Please contact the Advanced Media Workflow Association,
+#c Inc., for more information about any additional licenses to
+#c intellectual property covering the AAF Standard that may be required
+#c to create and distribute AAF compliant products.
+#c (http://www.amwa.tv/policies).
+#c
+#c Copyright Notices:
+#c The Original Code of this file is Copyright 1998-2009, licensor of the
+#c Advanced Media Workflow Association.  All rights reserved.
+#c
+#c The Initial Developer of the Original Code of this file and the
+#c licensor of the Advanced Media Workflow Association is
+#c Avid Technology.
+#c All rights reserved.
+#c
+#c *********************************************************************
+#startm .this-module 0
+AAFDataEssenceDescriptor\
+#endm
+#c
+#startm .parent-module 0
+AAFFileDescriptor\
+#endm
+#c
+#c #import ./AAFFileDescriptor.exp
+AD_HEAD
+AD_IDL(///
+
+/// AAFRESULT_NOMEMORY
+///   - insufficient system memory is available to perform the
+///     operation.
+///
+/// AAFRESULT_NOT_INITIALIZED
+///   - This object has not yet had Initialize\(\) called on it.
+///)
+
+AD_CLASS_UUID(0bcccb62, d720, 45e6, 80, 00, 3c, 21, 4f, 63, d8, 99)
+
+AD_DEFAULT_UUID(28aef97c, 5127, 4435, 98, c8, ba, f9, 06, b5, a6, a9)
+
+AD_XCLASS_BEGIN(Concrete, StoredObject)
+
+
+AD_METHOD0(Initialize,
+     Initializes a newly allocated\, empty IAAFDataEssenceDescriptor-supporting
+  /// object.  This method must be called after allocation\, and before
+  /// any other method can be called.
+  ///
+  /// Succeeds if:
+  /// - Initialize\(\) has not yet been called on this object.
+  ///
+  /// This method will return the following codes.  If more than one of
+  /// the listed errors is in effect\, it will return the first one
+  /// encountered in the order given below:
+  /// 
+  /// AAFRESULT_SUCCESS
+  ///   - succeeded.  \(This is the only code indicating success.\)
+  ///
+  /// AAFRESULT_ALREADY_INITIALIZED
+  ///   - Initialize\(\) has already been called on this object.)
+
+AD_XMETHOD1(SetDataEssenceCoding,
+			[in],
+				objPass,
+				aafUID_constref,
+				dataEssenceCoding,
+				Optional.,
+			Sets the DataEssenceCoding property
+  /// This property is optional.  
+  /// 
+  /// If this method fails the Data Definition property will not be
+  /// changed.
+  /// 
+  /// This method will return the following codes:
+  /// 
+  /// AAFRESULT_SUCCESS
+  ///   - succeeded.  \(This is the only code indicating success.\))
+
+
+AD_XMETHOD1(GetDataEssenceCoding,
+			[out],
+				objPass,
+				aafUID_t *,
+				pDataEssenceCoding,
+				Optional.,
+			Gets the DataEssenceCoding property
+  /// information of the video essence data.  This property is
+  /// optional.
+  ///
+  /// Succeeds if all of the following are true:
+  /// - the pDataEssenceCoding pointer is valid.
+  /// 
+  /// If this method fails nothing will be written to *pDataEssenceCoding.
+  /// 
+  /// This method will return the following codes:
+  /// 
+  /// AAFRESULT_SUCCESS
+  ///   - succeeded.  \(This is the only code indicating success.\)
+  ///
+  /// AAFRESULT_NULL_PARAM
+  ///   - pDataEssenceCoding arg is NULL.)
+
+AD_XCLASS_END(Concrete, StoredObject)

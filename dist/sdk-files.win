@@ -1,0 +1,34 @@
+# File list for VS10 and higher.
+
+# This is the minimum set of files required to compile, link, and run
+# an AAF application.
+#
+# "{PlatformDir}" must be changed to "Win32" or "x64" for VS10 and later.
+
+# First, the header files. (There are a couple of .c files in there as
+# well).
+include/*.h
+include/*.c
+
+# The release versions of the com-api, plugins, and static
+# libraries.
+./{PlatformDir}/Release/Refimpl/AAFCOAPI.dll
+./{PlatformDir}/Release/Refimpl/aafext/AAFINTP.dll
+./{PlatformDir}/Release/Refimpl/aafext/AAFPGAPI.dll
+./{PlatformDir}/Release/Refimpl/AAF.lib
+./{PlatformDir}/Release/Refimpl/AAFIID.lib
+
+# The debug versions of the com-api, plugins, and static libraries.
+
+# The debug libraries are more verbose in regards to error messages,
+# and also will dump a stack trace if any error is detected by the AAF
+# com library.  Of course, the debug libraries are also required in
+# order to run a debugger.  In that case, the source distribution will
+# also be required.
+
+./{PlatformDir}/Debug/Refimpl/AAFCOAPI.dll
+./{PlatformDir}/Debug/Refimpl/aafext/AAFINTP.dll
+./{PlatformDir}/Debug/Refimpl/aafext/AAFPGAPI.dll
+./{PlatformDir}/Debug/Refimpl/AAFD.lib
+./{PlatformDir}/Debug/Refimpl/AAFIIDD.lib
+

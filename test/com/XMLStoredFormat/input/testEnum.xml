@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+Rule 5.2: Enumeration
+
+a) baseline enumeration value
+b) enumeration value with element size 1
+c) enumeration value with element size 2
+d) enumeration value with element size 4
+e) enumeration value with element size 8
+    
+-->
+<AAF xmlns="http://www.aafassociation.org/aafx/v1.1/20090617" 
+    xmlns:aaf="http://www.aafassociation.org/aafx/v1.1/20090617"
+    xmlns:this="urn:uuid:8b6886f6-c6ac-4a5a-8158-309a238c1a08"
+    version="1.1">
+  <Extensions>
+    <Extension>
+        <Identification>urn:uuid:8b6886f6-c6ac-4a5a-8158-309a238c1a08</Identification>
+        <Symbolspace>urn:uuid:8b6886f6-c6ac-4a5a-8158-309a238c1a08</Symbolspace>
+        <Definitions>
+            <PropertyDefinition>
+                <Identification>urn:uuid:00000000-0000-0000-8000-000000000000</Identification>
+                <Symbol>BaselineEnum</Symbol>
+                <Name>BaselineEnum</Name>
+                <LocalIdentification>60000</LocalIdentification>
+                <Type>ProductReleaseType</Type>
+                <IsOptional>true</IsOptional>
+                <MemberOf>Package</MemberOf>
+            </PropertyDefinition>
+            <PropertyDefinition>
+                <Identification>urn:uuid:10000000-0000-0000-8000-000000000000</Identification>
+                <Symbol>Int8Enum</Symbol>
+                <Name>Int8Enum</Name>
+                <LocalIdentification>60001</LocalIdentification>
+                <Type>urn:uuid:00000000-1000-0000-8000-000000000000</Type>
+                <IsOptional>true</IsOptional>
+                <MemberOf>Package</MemberOf>
+            </PropertyDefinition>
+            <PropertyDefinition>
+                <Identification>urn:uuid:20000000-0000-0000-8000-000000000000</Identification>
+                <Symbol>Int16Enum</Symbol>
+                <Name>Int16Enum</Name>
+                <LocalIdentification>60002</LocalIdentification>
+                <Type>urn:uuid:00000000-2000-0000-8000-000000000000</Type>
+                <IsOptional>true</IsOptional>
+                <MemberOf>Package</MemberOf>
+            </PropertyDefinition>
+            <PropertyDefinition>
+                <Identification>urn:uuid:30000000-0000-0000-8000-000000000000</Identification>
+                <Symbol>Int32Enum</Symbol>
+                <Name>Int32Enum</Name>
+                <LocalIdentification>60003</LocalIdentification>
+                <Type>urn:uuid:00000000-3000-0000-8000-000000000000</Type>
+                <IsOptional>true</IsOptional>
+                <MemberOf>Package</MemberOf>
+            </PropertyDefinition>
+            <PropertyDefinition>
+                <Identification>urn:uuid:40000000-0000-0000-8000-000000000000</Identification>
+                <Symbol>Int64Enum</Symbol>
+                <Name>Int64Enum</Name>
+                <LocalIdentification>60004</LocalIdentification>
+                <Type>urn:uuid:00000000-4000-0000-8000-000000000000</Type>
+                <IsOptional>true</IsOptional>
+                <MemberOf>Package</MemberOf>
+            </PropertyDefinition>
+            <TypeDefinitionEnumeration>
+                <Identification>urn:uuid:00000000-1000-0000-8000-000000000000</Identification>
+                <Symbol>Int8EnumType</Symbol>
+                <Name>Int8EnumType</Name>
+                <ElementType>Int8</ElementType>
+                <Elements>
+                    <Name>AAA</Name>
+                    <Value>1</Value>
+                    <Name>BBB</Name>
+                    <Value>2</Value>
+                </Elements>
+            </TypeDefinitionEnumeration>
+            <TypeDefinitionEnumeration>
+                <Identification>urn:uuid:00000000-2000-0000-8000-000000000000</Identification>
+                <Symbol>Int16EnumType</Symbol>
+                <Name>Int16EnumType</Name>
+                <ElementType>Int16</ElementType>
+                <Elements>
+                    <Name>AAA</Name>
+                    <Value>1</Value>
+                    <Name>BBB</Name>
+                    <Value>2</Value>
+                </Elements>
+            </TypeDefinitionEnumeration>
+            <TypeDefinitionEnumeration>
+                <Identification>urn:uuid:00000000-3000-0000-8000-000000000000</Identification>
+                <Symbol>Int32EnumType</Symbol>
+                <Name>Int16EnumType</Name>
+                <ElementType>Int32</ElementType>
+                <Elements>
+                    <Name>AAA</Name>
+                    <Value>1</Value>
+                    <Name>BBB</Name>
+                    <Value>2</Value>
+                </Elements>
+            </TypeDefinitionEnumeration>
+            <TypeDefinitionEnumeration>
+                <Identification>urn:uuid:00000000-4000-0000-8000-000000000000</Identification>
+                <Symbol>Int64EnumType</Symbol>
+                <Name>Int64EnumType</Name>
+                <ElementType>Int64</ElementType>
+                <Elements>
+                    <Name>AAA</Name>
+                    <Value>1</Value>
+                    <Name>BBB</Name>
+                    <Value>2</Value>
+                </Elements>
+            </TypeDefinitionEnumeration>
+        </Definitions>
+    </Extension>
+  </Extensions>
+  <Preface>
+    <Dictionaries>
+      <Dictionary>
+        <DataDefinitions>
+          <DataDefinition aaf:uid="DataDef_Sound">
+            <DefinitionObjectIdentification>urn:smpte:ul:060e2b34.04010101.01030202.02000000</DefinitionObjectIdentification>
+            <DefinitionObjectName>Sound</DefinitionObjectName>
+            <DefinitionObjectDescription>Sound data</DefinitionObjectDescription>
+          </DataDefinition>
+        </DataDefinitions>
+      </Dictionary>
+    </Dictionaries>
+    <ByteOrder>LittleEndian</ByteOrder>
+    <FileLastModified>0000-00-00T00:00:00.00Z</FileLastModified>
+    <ContentStorageObject>
+      <ContentStorage>
+        <Packages>
+          <MaterialPackage>
+<!-- TEST DATA START -->
+            <this:BaselineEnum>VersionPrivateBuild</this:BaselineEnum>
+            <this:Int8Enum>AAA</this:Int8Enum>
+            <this:Int16Enum>BBB</this:Int16Enum>
+            <this:Int32Enum>AAA</this:Int32Enum>
+            <this:Int64Enum>BBB</this:Int64Enum>
+<!-- TEST DATA END -->
+            <PackageID>urn:smpte:umid:060a2b34.01010101.01010f02.13000000.f4304fc3.123141ed.bee5d2de.3067f0cb</PackageID>
+            <PackageTracks>
+              <TimelineTrack>
+                <TrackID>1</TrackID>
+                <TrackSegment>
+                  <SourceClip>
+                    <ComponentDataDefinition>DataDef_Sound</ComponentDataDefinition>
+                    <ComponentLength>0</ComponentLength>
+                    <SourcePackageID>urn:smpte:umid:00000000.00000000.00000000.00000000.00000000.00000000.00000000.00000000</SourcePackageID>
+                    <SourceTrackID>0</SourceTrackID>
+                  </SourceClip>
+                </TrackSegment>
+                <EditRate>48000/1</EditRate>
+                <Origin>0</Origin>
+              </TimelineTrack>
+            </PackageTracks>
+            <PackageLastModified>2005-06-02T10:00:00.00Z</PackageLastModified>
+            <CreationTime>2005-06-02T10:00:00.00Z</CreationTime>
+          </MaterialPackage>
+        </Packages>
+      </ContentStorage>
+    </ContentStorageObject>
+    <FormatVersion>1.1</FormatVersion>
+    <IdentificationList>
+      <Identification>
+        <ApplicationSupplierName>AAF Association</ApplicationSupplierName>
+        <ApplicationName>AAF-X Test</ApplicationName>
+        <ApplicationVersion>
+          <major>0</major>
+          <minor>1</minor>
+          <tertiary>0</tertiary>
+          <patchLevel>0</patchLevel>
+          <type>VersionUnknown</type>
+        </ApplicationVersion>
+        <ApplicationVersionString>Unknown version</ApplicationVersionString>
+        <ApplicationProductID>urn:uuid:d3ec8680-1e79-48f9-9941-0a10a16886af</ApplicationProductID>
+        <FileModificationDate>2005-06-02T10:00:00.00Z</FileModificationDate>
+        <ToolkitVersion>
+          <major>1</major>
+          <minor>1</minor>
+          <tertiary>0</tertiary>
+          <patchLevel>0</patchLevel>
+          <type>VersionBeta</type>
+        </ToolkitVersion>
+        <ApplicationPlatform>AAFSDK (Linux)</ApplicationPlatform>
+        <GenerationID>urn:uuid:8b6886f6-c6ac-4a5a-8158-309a238c1a08</GenerationID>
+      </Identification>
+    </IdentificationList>
+    <ObjectModelVersion>1</ObjectModelVersion>
+  </Preface>
+</AAF>

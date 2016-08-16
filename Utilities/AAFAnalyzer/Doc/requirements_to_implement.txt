@@ -1,0 +1,193 @@
+REQ_EP_013
+An application shall export each clip using one of the methods described in
+Section 6.1 of the AAF Edit Protocol.
+6.1
+> Should this be an APP requirement?
+
+REQ_EP_014
+An application shall import clips that use any of the methods described in
+Section 6.1 of the AAF Edit Protocol.
+6.1
+> Should this be an APP requirement?
+
+REQ_EP_023
+Within a Two-Parameter Audio Dissolve effect a CompositionMob may use a
+SourceClip object to reference a TimelineMobSlot beyond the extent of the
+TimelineMobSlot (before the begining or after the end).
+6.2.1
+> This is a MAY requirement
+
+REQ_EP_039
+A CompositionMob with Mob::UsageCode property equal to Usage_SubClip shall
+be treated as a sub-clip composition.
+6.5.1
+> Should this be an APP requirement?
+
+REQ_EP_056
+A MasterMob shall not reference more than one essence track of a particular
+file source from each time position in the MasterMob.
+> What does this mean?
+
+REQ_EP_097
+A Pulldown may be used in the following contexts: 1. In a TimelineMobSlot of a 
+file SourceMob, where the Pulldown object contains a SourceClip referencing a
+tape SourceMob; 2. In a TimelineMobSlot of a tape SourceMob, where the Pulldown
+object contains a SourceClip referencing a film SourceMob; 3. In a
+TimelineMobSlot of a tape SourceMob, where the Pulldown object contains a
+SourceClip referenceing a tape SourceMob.
+7.2
+> This is a MAY requirement
+
+REQ_EP_111
+The intended placement of each audio track when played shall be indicated using 
+the MobSlot::PhysicalTrackNumber property.  The Physical Track Number shall be
+an integer in the range 1 to the total number of audio tracks in the program. 
+Six channel surround tracks shall be numbered in accordance with SMPTE 320M
+Standard Assignment B (1=Left; 2=Right; 3=Center; 4=Low Frequency Effects;
+5=Left Surround; 6=Right Surround).
+7.8
+> 1: How do we know the intended placement?
+> 2: OK - Can check that PhysicalTrackNumber is in the range 1 to total number
+> of audio tracks.
+> 3. What is the meaning of "program" in the context of this requirement
+> 4. How do we know if six-channel surround is being used or if the tracks are
+> being numbered correctly?
+
+REQ_EP_112
+Within a SourceMob, multi-channel audio shall be represented in either of the 
+following ways: a single track with a multi-channel sound Data Definition and a
+single audio EssenceDescriptor object of multiple channels; or multiple tracks
+with a mono sound Data Definition and a MultipleDescriptor containing the same
+number of mono audio EssenceDescriptors.
+7.8
+> If it is represented in an illegal way, how do we determine that
+> multi-channel audio is being represented?
+
+REQ_EP_113
+To reference a single channel of a multi-channel track from a mono track, the 
+SourceReference::ChannelIDs property shall be used with a single element in the
+array.
+7.8
+> This is a pass condition, what constitutes a fail?
+
+REQ_EP_114
+To reference multiple channels of a multi-channel track from a multi-channel 
+track, the SourceReference::ChannelIDs property shall be used with multiple
+elements in the array.
+7.8
+> This is a pass condition, what constitutes a fail?
+
+REQ_EP_115
+To reference multiple mono tracks from a multi-channel track, the 
+SourceReference::MonoSourceSlotIDs shall be used with multiple elements in the
+array.
+7.8
+> This is a pass condition, what constitutes a fail?
+
+REQ_EP_116
+When exporting multi-channel essence as a single file SourceMob where the 
+multi-channel essence requires a codec that is not widely avaliable, the
+exporting application should also export the individual channels as separate
+essence and file SourceMobs, linked into the Mob reference chain.
+7.8.1
+> How do we determine it multi-channel essence requires a codec that is not
+> widely avaliabe?
+> How do we check (to present a warning) if the individual channels are
+> exported as separate essence.
+
+REQ_EP_121
+A clip with multiple file source choices shall be specified using an 
+EssenceGroup object in a MasterMob.
+7.9
+> Is this a definition?  If not, how do we know that a clip has multiple file
+> source choices and what would be a fail condition?
+
+DEF_EP_129
+A track of timecode shall be specified using one or more Timecode objects or a 
+TimecodeStream12M object.
+7.11
+> This is a definition.
+
+REQ_EP_137
+An AAF Mob (such as an AAF composition) may reference an auxiliary SourceMob 
+using a SourceReference (or sub-class thereof) from a DataDef_Auxiliary Slot in
+the referencing Mob to the DataDef_Auxiliary Slot in the auxiliary SourceMob.
+9.1.1
+> This is a MAY requirement
+
+REQ_EP_138
+An embedded auxiliary file shall be specified using an EssenceData object 
+containing the auxiliary file data.  The EssenceData object is linked to the
+auxiliary SourceMob using a common MobID.
+9.1.1
+> Is this a definition?  If not, what is being tested?
+
+REQ_EP_142
+No more than one MIDI auxiliary file shall be referenced from a given 
+composition.
+9.2
+> How you determine if a MIDI auxiliary file is being referenced?
+>
+
+REQ_EP_143
+A referenced MIDI file shall conform to the standard MIDI specification version 
+1.
+9.2
+> OK if we can find a good parser.  The one at
+> http://www.jdkoftinoff.com/main/Free_Projects/C++_MIDI_Library/ might work,
+> but I'd like to know if something else is being used elsewhere in AAF code. 
+> If not, I'd like to get someone else opinion on if this library will work.
+
+REQ_EP_148
+The Data Definition for non-essence tracks containing annotations shall be 
+DataDef_DescriptiveMetadata.
+10.1
+> What object do I need to check the data definition of?  Is it just getting the
+> Data Definition of a mob slot of any non-essence track that has an object
+> under it which contains annotations?
+
+REQ_EP_169
+Multiple effects sharing common material shall be constructed within a 
+NestedScope object.  A continuous section of common material, used by several
+effects, shall be represented as a single segment in the NestedScope.
+11.2.3
+> How do you determine if common material is being shared multiple effects?
+
+REQ_EP_172
+A nested group of tracks within a Segment of a CompositionMob shall be specified
+using a NestedScope object.
+11.4
+> This is a definition.
+
+REQ_EP_173
+A ScopeReference shall reference an existing MobSlot or NestedScope track.
+11.4.2
+> Is there anything else that it can reference?  How does this test fail?
+
+REQ_EP_178
+Effects that take multiple video inputs shall have all of their parameters VH 
+normalized to the first video input unless explicitly stated otherwise in the
+effect definition.
+11.6
+> How do we check that they are normalized?  How is it otherwise stated?
+
+REQ_EP_191
+The Edit Protocol deprecates the use of specifying a Video Repeat Effect by 
+using a SourceClip in a TimelineMobSlot that references a still frame in a
+StaticMobSlot.  An exporting application shall not use this representation and
+an importing application need not accept it.
+12.4.1
+> OK: if this means that a video source clip in a timeline mob slot can not
+> reference a StaticMobSlot.
+
+REQ_EP_238
+A Mono Audio Pan effect shall only be applied to audio tracks that refer to mono
+essence.
+12.18
+> How do you determine if a track refers to Mono essence?
+
+REQ_EP_239
+Audio pan effects shall not be nested.  The top-level pan value shall be 
+applied.
+12.18
+> What is being tested?

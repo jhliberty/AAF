@@ -1,0 +1,85 @@
+
+cpp_quote("//=---------------------------------------------------------------------=")
+cpp_quote("//")
+cpp_quote("// This file was GENERATED for the AAF SDK")
+cpp_quote("//")
+cpp_quote("// $Id: AAFPluginTypes.idl,v 1.6 2012/06/26 20:54:40 jptrainor Exp $ $Name: V116 $")
+cpp_quote("//")
+cpp_quote("// The contents of this file are subject to the AAF SDK Public Source")
+cpp_quote("// License Agreement Version 2.0 (the \"License\"); You may not use this")
+cpp_quote("// file except in compliance with the License.  The License is available")
+cpp_quote("// in AAFSDKPSL.TXT, or you may obtain a copy of the License from the")
+cpp_quote("// Advanced Media Workflow Association, Inc., or its successor.")
+cpp_quote("//")
+cpp_quote("// Software distributed under the License is distributed on an \"AS IS\"")
+cpp_quote("// basis, WITHOUT WARRANTY OF ANY KIND, either express or implied.  See")
+cpp_quote("// the License for the specific language governing rights and limitations")
+cpp_quote("// under the License.  Refer to Section 3.3 of the License for proper use")
+cpp_quote("// of this Exhibit.")
+cpp_quote("//")
+cpp_quote("// WARNING:  Please contact the Advanced Media Workflow Association,")
+cpp_quote("// Inc., for more information about any additional licenses to")
+cpp_quote("// intellectual property covering the AAF Standard that may be required")
+cpp_quote("// to create and distribute AAF compliant products.")
+cpp_quote("// (http://www.amwa.tv/policies).")
+cpp_quote("//")
+cpp_quote("// Copyright Notices:")
+cpp_quote("// The Original Code of this file is Copyright 1998-2012, licensor of the")
+cpp_quote("// Advanced Media Workflow Association.  All rights reserved.")
+cpp_quote("//")
+cpp_quote("// The Initial Developer of the Original Code of this file and the")
+cpp_quote("// licensor of the Advanced Media Workflow Association is")
+cpp_quote("// Avid Technology.")
+cpp_quote("// All rights reserved.")
+cpp_quote("//")
+cpp_quote("//=---------------------------------------------------------------------=")
+
+
+
+#ifndef DO_NO_IMPORTS
+import "wtypes.idl";
+#endif
+#ifndef DO_NO_IMPORTS
+import "AAFTypes.idl";
+#endif
+
+[
+    uuid(410ED8B1-912B-11D2-8088-006008143e6f),
+    pointer_default(unique)
+]
+
+interface IAAFPluginTypes
+{
+
+typedef aafInt32 aafDeinterleave_t;
+typedef enum _aafDeinterleave_e
+{
+	kAAFdeinterleave,
+	kAAFleaveInterleaved
+} aafDeinterleave_e;
+
+typedef aafInt32 aafCheckVerbose_t;
+typedef enum _aafCheckVerbose_e
+{
+	kAAFCheckVerbose, 
+	kAAFCheckQuiet
+} aafCheckVerbose_e;
+
+typedef aafInt32 aafCheckWarnings_t;
+typedef enum _aafCheckWarnings_e
+{
+	kAAFCheckPrintWarnings, 
+	kAAFCheckNoWarnings
+} aafCheckWarnings_e;
+
+typedef struct _aafSelectInfo_t
+{
+	aafBoolean_t         	hwAssisted;
+	aafBoolean_t		isNative;
+	aafBoolean_t   		willHandleMDES;
+	aafInt16		relativeLoss;
+	aafUInt32		avgBitsPerSec;
+} aafSelectInfo_t;
+
+}
+

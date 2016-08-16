@@ -1,0 +1,144 @@
+#c *********************************************************************
+#c
+#c $Id: AAFEventMobSlot2.dod,v 1.3 2009/06/01 11:46:50 stuart_hc Exp $ $Name: V116 $
+#c
+#c The contents of this file are subject to the AAF SDK Public Source
+#c License Agreement Version 2.0 (the "License"); You may not use this
+#c file except in compliance with the License.  The License is available
+#c in AAFSDKPSL.TXT, or you may obtain a copy of the License from the
+#c Advanced Media Workflow Association, Inc., or its successor.
+#c
+#c Software distributed under the License is distributed on an "AS IS"
+#c basis, WITHOUT WARRANTY OF ANY KIND, either express or implied.  See
+#c the License for the specific language governing rights and limitations
+#c under the License.  Refer to Section 3.3 of the License for proper use
+#c of this Exhibit.
+#c
+#c WARNING:  Please contact the Advanced Media Workflow Association,
+#c Inc., for more information about any additional licenses to
+#c intellectual property covering the AAF Standard that may be required
+#c to create and distribute AAF compliant products.
+#c (http://www.amwa.tv/policies).
+#c
+#c Copyright Notices:
+#c The Original Code of this file is Copyright 1998-2009, licensor of the
+#c Advanced Media Workflow Association.  All rights reserved.
+#c
+#c The Initial Developer of the Original Code of this file and the
+#c licensor of the Advanced Media Workflow Association is
+#c Avid Technology.
+#c All rights reserved.
+#c
+#c *********************************************************************
+#startm .this-module 0
+AAFEventMobSlot2\
+#endm
+#c
+#startm .parent-module 0
+AAFMobSlot\
+#endm
+#c
+#import ./AAFMobSlot.exp
+AD_HEAD
+
+AD_IDL(///
+/// An EventMobSlot\, as all MobSlots\, has a concrete segment\, which
+/// is a concrete Event or a Sequence of ordered Events. If it has a
+/// sequence of events\, all events shall have the same concrete
+/// Event.
+///)
+AD_CLASS_UUID(15375123, ce6c, 464d, 8a, c5, 22, 88, 62, e6, 1d, 08)
+
+AD_DEFAULT_UUID(15375122, ce6c, 464d, 8a, c5, 22, 88, 62, e6, 1d, 08)
+AD_XCLASS_BEGIN(Concrete, StoredObject)
+AD_METHOD1(GetEditRate,
+		   [out\\\,retval], 
+		   aafRational_t *, 
+		   pEditRate, 
+		   Edit rate property value,
+		   This method will get the edit rate for this mob slot.
+  /// 
+  /// Succeeds if all of the following are true:
+  /// - the pEditRate pointer is valid.
+  /// 
+  /// This method will return the following codes.  If more than one of
+  /// the listed errors is in effect\\\, it will return the first one
+  /// encountered in the order given below:
+  /// 
+  /// AAFRESULT_SUCCESS
+  ///   - succeeded.  \\\(This is the only code indicating success.\\\)
+  ///
+  /// AAFRESULT_NOT_INITIALIZED
+  ///   - This object has not yet had Initialize\\\(\\\) called on it.
+  ///
+  /// AAFRESULT_NULL_PARAM
+  ///   - pEditRate arg is NULL.)
+
+
+AD_METHOD1(SetEditRate,
+		   [in], 
+		   aafRational_t *, 
+		   pEditRate, 
+		   Edit rate property value,
+		   This method will get set edit rate for this mob slot.
+  /// 
+  /// Succeeds if all of the following are true:
+  /// - the pEditRate pointer is valid.
+  /// 
+  /// This method will return the following codes.  If more than one of
+  /// the listed errors is in effect\\\, it will return the first one
+  /// encountered in the order given below:
+  /// 
+  /// AAFRESULT_SUCCESS
+  ///   - succeeded.  \\\(This is the only code indicating success.\\\)
+  ///
+  /// AAFRESULT_NOT_INITIALIZED
+  ///   - This object has not yet had Initialize\\\(\\\) called on it.
+  ///
+  /// AAFRESULT_NULL_PARAM
+  ///   - pEditRate arg is NULL.)
+
+AD_METHOD1(GetEventSlotOrigin,
+		   [out\\\,retval],
+		   aafPosition_t *,
+		   pEventSlotOrigin,
+		   EventSlotOrigin property value,
+		   This method will return the EventSlotOrigin of this mob slot.
+  /// The EventSlotOrigin is an optional property.
+  /// 
+  /// Succeeds if all of the following are true:
+  /// - the pEventSlotOrigin pointer is valid.
+  /// - the EventSlotOrigin property is present.
+  /// 
+  /// This method will return the following codes.  If more than one of
+  /// the listed errors is in effect\\\, it will return the first one
+  /// encountered in the order given below:
+  /// 
+  /// AAFRESULT_SUCCESS
+  ///   - succeeded.  \\\(This is the only code indicating success.\\\)
+  ///
+  /// AAFRESULT_PROP_NOT_PRESENT
+  ///   - The EventSlotOrigin property is not present.
+  ///
+  /// AAFRESULT_NULL_PARAM
+  ///   - pEventSlotOrigin arg is NULL.)
+
+
+AD_METHOD1(SetEventSlotOrigin,
+		   [in],
+		   aafPosition_t,
+		   eventSlotOrigin,
+		   EventSlotOrigin property value,
+		   This method will set the EventSlotOrigin of this mob slot.
+  /// EventSlotOrigin is an optional property.
+  /// 
+  /// This method will return the following codes.  If more than one of
+  /// the listed errors is in effect\\\, it will return the first one
+  /// encountered in the order given below:
+  /// 
+  /// AAFRESULT_SUCCESS
+  ///   - succeeded.  \\\(This is the only code indicating success.\\\).)
+
+
+AD_OVERRIDE(.method-SetSegment)
+AD_XCLASS_END(Concrete, StoredObject)
